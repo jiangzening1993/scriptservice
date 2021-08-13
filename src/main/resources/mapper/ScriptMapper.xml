@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiang.scriptservice.mapper.ScriptMapper">
+    <insert id="createScript" parameterType="com.jiang.scriptservice.entity.Script">
+        insert into script(title, description, creatorId, tag, createTime, fileId)
+        values (#{title}, #{description}, #{creatorId}, #{tag}, #{createTime}, #{fileId});
+    </insert>
+
+    <select id="list" resultType="com.jiang.scriptservice.entity.Script">
+        select * from script order by createTime desc limit #{offset}, #{size};
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1) from script;
+    </select>
+
+    <select id="countById" parameterType="int" resultType="int">
+        select count(1) from script where creatorId=#{userid};
+    </select>
+
+    <select id="listById" resultType="com.jiang.scriptservice.entity.Script">
+        select * from script where creatorId=#{userid} order by createTime desc limit #{offset}, #{size};
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.jiang.scriptservice.entity.Script">
+        select * from script where id=#{id};
+    </select>
+
+</mapper>

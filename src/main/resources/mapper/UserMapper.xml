@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiang.scriptservice.mapper.UserMapper">
+    <insert id="insert" parameterType="com.jiang.scriptservice.entity.User">
+        insert into user(name, password, token) values(#{name},#{password},#{token});
+    </insert>
+
+    <select id="select" parameterType="com.jiang.scriptservice.entity.User" resultType="com.jiang.scriptservice.entity.User">
+        select * from user where name=#{name} and password=#{password};
+    </select>
+
+    <select id="findByToken" parameterType="string" resultType="com.jiang.scriptservice.entity.User">
+        select * from user where token=#{token};
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.jiang.scriptservice.entity.User">
+        select * from user where id=#{creatorId};
+    </select>
+</mapper>

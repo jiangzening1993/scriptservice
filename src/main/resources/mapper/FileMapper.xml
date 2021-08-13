@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiang.scriptservice.mapper.FileMapper">
+    <insert id="insert" parameterType="com.jiang.scriptservice.entity.Files">
+        insert into file(filePath, fileName, fileSuffix) values (#{filePath}, #{fileName}, #{fileSuffix});
+    </insert>
+    
+    <select id="list" resultType="com.jiang.scriptservice.entity.Files">
+        select * from file;
+    </select>
+    
+    <select id="findById" parameterType="int" resultType="com.jiang.scriptservice.entity.Files">
+        select * from file where id=#{id};
+    </select>
+
+    <select id="findByPath" parameterType="string" resultType="com.jiang.scriptservice.entity.Files">
+        select * from file where filePath=#{filePath};
+    </select>
+
+
+</mapper>
